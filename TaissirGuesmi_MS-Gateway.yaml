@@ -1,0 +1,20 @@
+spring:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:6001/eureka/
+  cloud:
+        gateway:
+            routes:
+                - id: TaissirGuesmi_GestionFormateur
+                  uri: lb://TaissirGuesmi_GestionFormateur
+                  predicates:
+                  - Path: /formateur/**
+                  filters:
+                  - RewritePath= /formateur/(?<path>.*) , /$\{path}
+
+                - id: TaissirGuesmi_GestionCours
+                  uri: lb://TaissirGuesmi_GestionCours
+                  predicates:
+                  - Path: /cours/**
+                  filters:
+                  - RewritePath= /cours/(?<path>.*) , /$\{path}
