@@ -8,13 +8,14 @@ spring:
                 - id: TaissirGuesmi_GestionFormateur
                   uri: lb://TaissirGuesmi_GestionFormateur
                   predicates:
-                  - Path: /formateur/**
+                  - Path= /formateur/**
+                  - After= 2024-01-10T17:42:47.789-07:00[Africa/Tunis]
                   filters:
                   - RewritePath= /formateur/(?<path>.*) , /$\{path}
 
                 - id: TaissirGuesmi_GestionCours
                   uri: lb://TaissirGuesmi_GestionCours
                   predicates:
-                  - Path: /cours/**
+                  - Path= /cours/**
                   filters:
                   - RewritePath= /cours/(?<path>.*) , /$\{path}
